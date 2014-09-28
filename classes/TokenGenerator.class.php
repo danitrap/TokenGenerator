@@ -5,11 +5,9 @@ class TokenGenerator
   private $charsetSize;
   private $charsetClass;
   
-  public function __construct($charset = null)
+  public function __construct()
   {
-    if ($charset === null) 
-	  $charset = new AlphanumericCharset();
-    $this->charsetClass = $charset;
+    $this->charsetClass = new AlphanumericCharset();
     $this->prepareCharset();
   }
   
