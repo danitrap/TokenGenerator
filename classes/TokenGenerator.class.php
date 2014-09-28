@@ -3,12 +3,10 @@ class TokenGenerator
 {
   private $charsetArray;
   private $charsetSize;
-  private $charsetClass;
   
   public function __construct()
   {
-    $this->charsetClass = new AlphanumericCharset();
-    $this->prepareCharset();
+    $this->prepareCharset(new AlphanumericCharset());
   }
   
   public function generate($max = 3)
@@ -23,19 +21,18 @@ class TokenGenerator
   
   public function setCharset(iCharset $charset)
   {
-	$this->charsetClass = $charset;
-	$this->prepareCharset();
+	$this->prepareCharset($charset);
   }
   
-  private function prepareCharset()
+  private function prepareCharset(iCharset $charset)
   {
-    $this->charsetArray = $this->charsetClass->getCharset();
-    $this->charsetSize = count($this->charsetArray) - 1;
+    $this->charsetArray = $charset->getCharset();
+    $this->charsetSize = count($this->charsetArray);
   }
   
   private function randomChar()
   {
-    $index = rand(0, $this->charsetSize);
+    $index = rand(0, $this->charsetSize - 1);
     return $this->charsetArray[$index];
   }
 }
