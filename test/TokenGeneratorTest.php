@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($class) {
-    include '../classes/' . $class . '.class.php';
+    include 'classes/' . $class . '.class.php';
 });
 
 class TokenGeneratorTest extends PHPUnit_Framework_TestCase
@@ -42,8 +42,6 @@ class TokenGeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testAlphanumeric()
     {
-        $this->tg->setCharset(new AlphanumericCharset());
-        $result = $this->tg->generate();
-        $this->assertRegExp('/[a-z0-9]/', $result);
+        $this->testDefaultBehaviour();
     }
 }
