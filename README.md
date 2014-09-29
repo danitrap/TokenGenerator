@@ -4,13 +4,13 @@
 
 ```php
 $tg = new TokenGenerator();
-$token->setCharset(new AlphabeticCharset());
-print $token->generate();
+$tg->setCharset(new AlphabeticCharset());
+print $tg->generate();
 ```
 
 ## Tests
 
-It uses PHPUnit for tests.
+Run `phpunit test/TokenGeneratorTest.php` to test it.
 
 
 ## License
